@@ -14,20 +14,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout release tag
+        uses: actions/checkout@v6
+        with:
+          # Manual releases build the requested existing tag, just like tag-triggered releases.
+          ref: refs/tags/${{ inputs.tag || github.ref_name }}
 
       - name: Use Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: "24.x"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Use npm 12
+        # npm 12 applies package.json's allowScripts policy: esbuild is allowed, Electron's download is disabled.
+        run: npm install --global npm@12
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build plugin
-        run: |
-          npm ci --ignore-scripts
-          npm run test:unit
-          npm run package
+        # Packaging compiles TypeScript and styles; tests are run only in the local repository.
+        run: npm run package
 
       - name: Zip output
         working-directory: dist/release
@@ -41,6 +54,7 @@ jobs:
         run: |
           gh release create "$RELEASE_TAG" \
             --title="Release $RELEASE_TAG" \
+            --verify-tag \
             --draft \
             dist/release/notetofoundry/main.js \
             dist/release/notetofoundry/manifest.json \
