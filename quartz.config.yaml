@@ -36,7 +36,7 @@ configuration:
   # and do NOT add a trailing slash.
   # --------------------------------------------------------------
 
-  baseUrl: "cepeu.github.io/NoteToFoundry"
+  baseUrl: "cepeu.github.io/Note-To-Foundry"
 
   # --------------------------------------------------------------
   # Files/directories Quartz must never publish.
