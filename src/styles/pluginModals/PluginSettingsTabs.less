@@ -1,0 +1,48 @@
+/*======================================================
+Tabbed Obsidian Settings layout
+========================================================*/
+    
+.n2f-settings-tab-header {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0px; /* Connects with the content box */
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.n2f-tab-button {
+    padding: 6px 16px;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid var(--background-modifier-border);
+    border-bottom: none;
+    background-color: var(--background-secondary);
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+
+.n2f-tab-button.active {
+    background-color: var(--background-primary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--interactive-accent); /* Highlights the active tab */
+    color: var(--text-accent);
+}
+
+/* Tab Content Box */
+.n2f-settings-tab-content {
+    border: 1px solid var(--background-modifier-border);
+    border-top: none;
+    padding: 16px;
+    background-color: var(--background-primary);
+    
+ 
+}
+
+/* Ensure settings inside look correct */
+.n2f-settings-section {
+    display: block;
+    /* SCROLL LOGIC */
+    max-height: 60vh; /* Limits height to 60% of the viewport */
+    overflow-y: auto; /*auto creates a scrollbar only if necessary */
+    border-radius: 0 0 2px 2px;
+    scrollbar-color: #888 #f1f1f1;
+}

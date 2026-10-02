@@ -1,0 +1,11 @@
+{
+	"id": "notetofoundry",
+	"name": "Note to Foundry",
+	"version": "1.3.5",
+	"minAppVersion": "1.13.4",
+	"description": "Exports Markdown to HTML and allows to adjust the HTML code. It then allows to export the HTML to clipboard, as file and to Foundry VTT.",
+	"author": "CePeU",
+	"authorUrl": "https://github.com/CePeU",
+	"fundingUrl": "",
+	"isDesktopOnly": true
+}

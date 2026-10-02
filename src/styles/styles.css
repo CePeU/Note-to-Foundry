@@ -1,0 +1,402 @@
+/*========================================================================================================
+Animation during HTML export
+==========================================================================================================*/
+.mdToFoundry-rotate {
+  animation: md2html-rotating 2s linear infinite;
+  width: 24px;
+  display: block;
+  margin: auto;
+}
+
+.mdToFoundry-rotate>svg {
+  margin: auto;
+  display: block;
+}
+
+@keyframes md2html-rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mdToFoundry-list {
+  padding: 0.75em 0;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+/*========================================================================================================
+CSS for MultiColumnListModal
+==========================================================================================================*/
+.n2f-modal {
+  width: 80vw;
+}
+
+.n2f-modal-explanation {
+  /*max-width: 80%;*/
+  padding: 0.5rem 0;
+}
+
+/*.n2f-modal-container{
+}*/
+.n2f-modal-two-column-rows-container {
+  /*display: flex;
+  flex-direction: column;*/
+  width: 100%;
+  gap: 4px;
+  max-height: 60%;
+  /* Modal scrollbar */
+  max-width: fit-content;
+  overflow-y: auto;
+}
+
+.n2f-modal-column-row {
+  display: flex;
+  flex-direction: row;
+  /*display: grid;
+  grid-template-columns: 1fr 6fr 6fr 2fr;*/
+  max-width: fit-content;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Target the button bar container */
+.n2f-modal-bar-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+/* Target all setting items within the button bar */
+.n2f-modal-bar-buttons .setting-item {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border: none;
+  flex: 0 0 auto;
+}
+
+/* Target the control (button container) */
+.n2f-modal-bar-buttons .setting-item-control {
+  margin: 0;
+  padding: 0;
+}
+
+/* Target the info element (setting item container)*/
+.n2f-modal-bar-buttons .setting-item-info {
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional: Style the buttons themselves */
+/*.n2f-modal-bar-buttons button {
+  padding: 0.25rem 0.5rem;
+  min-width: 32px;
+  height: 24px;
+  
+}*/
+.n2f-modal-row-drag-handle {
+  cursor: grab;
+  user-select: none;
+  padding: 0 4px;
+}
+
+.n2f-modal-add-row-global {
+  margin-top: 6px;
+  align-self: flex-start;
+}
+
+.n2f-modal-column-row.dragging {
+  opacity: 0.5;
+}
+
+.n2f-modal-column-row.drag-over {
+  outline: 1px dashed var(--text-muted);
+}
+
+.n2f-modal-column-row {
+  /*--n2f-modal-inputbox-size: 40ch;*/
+  display: grid;
+  grid-template-columns: var(--n2f-grid-columns, 12px var(--n2f-modal-inputbox-size, 20rem) var(--n2f-modal-inputbox-size, 20rem) auto);
+  align-items: center;
+  gap: 4px;
+}
+
+.n2f-modal-header-row {
+  /*display: grid;
+  grid-template-columns: var(--n2f-grid-columns, 12px  var(--n2f-modal-inputbox-size,20rem)  var(--n2f-modal-inputbox-size,20rem) auto);
+  align-items: center;
+  gap: 4px;*/
+  font-weight: bold;
+  background-color: var(--background-secondary);
+  border-bottom: 2px solid var(--text-muted);
+  border-top: 2px solid var(--text-muted);
+  margin-bottom: 0.5rem;
+  min-width: 100%;
+}
+
+/*========================================================================================================
+CSS for details tag used in settings menu
+==========================================================================================================*/
+/*Target the summary tag and disable the arrow marker and the events to toggle the summary tag */
+summary.n2f-toggle-summary-tag {
+  list-style: none;
+  pointer-events: none;
+}
+
+.n2f-toggle-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Target the point in the toggle element and change it to a diamond style*/
+summary.n2f-toggle-summary-tag label.checkbox-container::after {
+  /*pointer-events: auto;*/
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  /*width: 20px;      /* Rectangle width */
+  /*height: 20px;     /* Rectangle height */
+  /*transform: rotate(45deg);*/
+  /*border: 10px solid black; */
+}
+
+/*Traget the label for the checkbox container and enable pointer on it events (again after having them removed for the summary tag)*/
+summary.n2f-toggle-summary-tag label.checkbox-container {
+  pointer-events: auto;
+}
+
+/*
+.modal-container div.vertical-tab-content {
+  overflow: hidden; /*hides scrollbar
+}*/
+/*has targets the parent if (any) child has the class n2f-settings-tab-header   
+an alternative is to target any child class that starts with n2f .vertical-tab-content:has([class^="n2f"])*/
+.vertical-tab-content:has(.n2f-settings-tab-header) {
+  overflow-y: hidden;
+  /*padding: 0;*/
+  padding-inline-start: 0px;
+  padding-inline-end: 0px;
+}
+
+/*======================================================
+Tabbed Obsidian Settings layout
+========================================================*/
+.n2f-settings-tab-header {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0px;
+  /* Connects with the content box */
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.n2f-tab-button {
+  padding: 6px 16px;
+  border-radius: 6px 6px 0 0;
+  border: 1px solid var(--background-modifier-border);
+  border-bottom: none;
+  background-color: var(--background-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+}
+
+.n2f-tab-button.active {
+  background-color: var(--background-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--interactive-accent);
+  /* Highlights the active tab */
+  color: var(--text-accent);
+}
+
+/* Tab Content Box */
+.n2f-settings-tab-content {
+  border: 1px solid var(--background-modifier-border);
+  border-top: none;
+  padding: 16px;
+  background-color: var(--background-primary);
+}
+
+/* Ensure settings inside look correct */
+.n2f-settings-section {
+  display: block;
+  /* SCROLL LOGIC */
+  max-height: 60vh;
+  /* Limits height to 60% of the viewport */
+  overflow-y: auto;
+  /*auto creates a scrollbar only if necessary */
+  border-radius: 0 0 2px 2px;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/*========================================================================================================
+Secret Callout CSS
+==========================================================================================================*/
+/* =============================
+       Basislayout (nur Demo)
+       ============================= */
+/* =============================
+       Globale Variablen für .n2f
+       ============================= */
+h1 .n2f {
+  margin-bottom: 1rem;
+}
+
+.n2f {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  /*margin: 2rem;*/
+  /*background: #111;*/
+  color: #eee;
+  /*max-width: 900px;*/
+  flex: 1;
+  height: 100%;
+  margin: 0 auto;
+  /* Header (Summary) */
+  --n2f-callout-header-gradient: linear-gradient(90deg, #283593, #42a5f5);
+  --n2f-callout-header-text-color: #fdfdfd;
+  /* Inhalt */
+  --n2f-callout-body-bg: linear-gradient(180deg, #283593, #42a5f5);
+  /* #1b1b1f;*/
+  --n2f-callout-body-text-color: #d8d8e0;
+  /* Card-Rand & Hintergrund */
+  --n2f-callout-card-border: #424242;
+  --n2f-callout-card-bg: #181818;
+  /* Icon ==> secret.svg*/
+  --n2f-callout-icon-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iaGVpZ2h0OiA1MTJweDsgd2lkdGg6IDUxMnB4OyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJsb3JjLWRvbWluby1tYXNrLWdyYWRpZW50LTAiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmY2ZmMDAiIHN0b3Atb3BhY2l0eT0iMSI+PC9zdG9wPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y4ZTcxYyIgc3RvcC1vcGFjaXR5PSIxIj48L3N0b3A+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIyNTIiIGZpbGw9InVybCgjbG9yYy1kb21pbm8tbWFzay1ncmFkaWVudC0wKSIgc3Ryb2tlPSIjMDIwMjAyIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLXdpZHRoPSI0Ij48L2NpcmNsZT48ZyBjbGFzcz0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLDApIiBzdHlsZT0iIj48cGF0aCBkPSJNNDEzLjI4IDEyMy4wNjNDMzY2Ljc4NyAxMjMuMzE3IDMwNi4wOCAxNDMgMjU1Ljg0NSAxNDNjLTU2Ljg2OCAwLTEyNC4xNzQtMjMuNzA0LTE3MS0xOS4xNTYtMjMuNDE0IDIuMjc0LTQwLjY0MiAxMC4xNi01Mi4yOCAzMC45MzctMTEuNjQgMjAuNzgtMTcuMjMgNTYuMzM3LTEwLjk3IDExMy4xOSA4LjU3OCA3Ny45MTcgNzMuMjI1IDExOC45NzMgMTI4LjY1NiA5OS40MDUgMTEuNTEzLTQuMDY0IDMwLjk3Mi0yNS4yNTYgNDktNDYuMTI1IDkuMDE0LTEwLjQzNCAxNy45OTMtMjAuNjg3IDI3LjAzLTI4LjcyIDkuMDQtOC4wMyAxOC4yMy0xNC42MjQgMjkuNTY0LTE0LjYyNCAxMS4zMzUgMCAyMC40OTMgNi41OTQgMjkuNTMgMTQuNjI1IDkuMDQgOC4wMzMgMTguMDE4IDE4LjI4NiAyNy4wMzIgMjguNzIgMTguMDI4IDIwLjg3IDM3LjQ4NyA0Mi4wNiA0OSA0Ni4xMjUgNTUuNDUgMTkuNTc0IDExOC45My0yMS42NzIgMTI4LjY4OC05OS41NjMgNy4xMzctNTYuOTg2IDEuNzUzLTkyLjUyOC05LjkzOC0xMTMuMjgtMTEuNjktMjAuNzU0LTI5LjM0Ni0yOC42NjUtNTMuMjItMzAuOTA3LTIuOTgzLS4yOC02LjA1LS40Ni05LjE4Ni0uNTMtMS40Ny0uMDM1LTIuOTctLjA0LTQuNDctLjAzMnpNMTM1LjA2NCAxODEuNzJjMjIuMzc4LS4yIDQ0Ljc0NiAxMC41NTYgNjcuMTI1IDMwLjc4LTQzLjQgNTQuNjctMTA4LjQ4OCAzNy4wNDQtMTMwLjE4OCAwIDIxLjAyMi0yMC43MzggNDIuMDQtMzAuNTk0IDYzLjA2My0zMC43OHptMjM0LjYyNSAwYy43LS4wMTYgMS4zOTQtLjAwNyAyLjA5MyAwIDIxLjAyMy4xODYgNDIuMDczIDEwLjA0MiA2My4wOTUgMzAuNzgtMjEuNyAzNy4wNDQtODYuODIgNTQuNjctMTMwLjIyIDAgMjEuNjgtMTkuNTkyIDQzLjM1NC0zMC4zMTIgNjUuMDMzLTMwLjc4eiIgZmlsbD0iIzA3MDcwNyIgZmlsbC1vcGFjaXR5PSIxIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MS4yLCA1MS4yKSBzY2FsZSgwLjgsIDAuOCkgcm90YXRlKDAsIDI1NiwgMjU2KSBza2V3WCgwKSBza2V3WSgwKSI+PC9wYXRoPjwvZz48L3N2Zz4=");
+  --n2f-callout-icon-size: 72px;
+  /*--n2f-callout-icon-color: #ff00ff;  #070707;*/
+  /* Kreisfarben */
+  --n2f-callout-border-open: #4caf50;
+  /* grün, offen */
+  --n2f-callout-border-closed: #d81f1c;
+  /* rot, geschlossen */
+}
+
+/* zweite Farbvariante für Demo */
+.n2f.variant-purple {
+  --n2f-callout-header-gradient: linear-gradient(90deg, #7e57c2, #ba68c8);
+}
+
+/* =============================
+       Card-Grundlayout
+       ============================= */
+.n2f-callout {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: 5px;
+  overflow: visible;
+  /* wichtig: Bild darf überstehen */
+  /*border: 1px solid var(--n2f-callout-card-border); 
+      background: var(--n2f-callout-card-bg);*/
+  color: var(--n2f-callout-body-text-color);
+}
+
+/* =============================
+       Header / Summary
+       ============================= */
+.n2f-callout-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Platz für den runden Button links */
+  padding: 1.2rem 0.75rem 0.75rem 5.5rem;
+  /* Dicke des Titels - aber so ganz richtig ?*/
+  border-top-left-radius: 36px;
+  /* Halber Icon durchmesser ?*/
+  cursor: pointer;
+  list-style: none;
+  background-image: var(--n2f-callout-header-gradient);
+  color: var(--n2f-callout-header-text-color);
+  text-transform: uppercase;
+  justify-content: start;
+  text-align: start;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+/* Standard-Details-Marker ausblenden */
+.n2f-callout-title::-webkit-details-marker {
+  display: none;
+}
+
+.n2f-callout-title::marker {
+  content: "";
+}
+
+/* rechter Zusatztext im Header (z.B. Level / XP) */
+.n2f-callout-title span.right {
+  margin-left: auto;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* =============================
+       Rundes Bild als Ecken-Button
+       ============================= */
+.n2f-callout-title::before {
+  content: "";
+  position: absolute;
+  /* Button über der linken oberen Ecke „hängend“ */
+  left: 0rem;
+  /* negativ → ragt links raus */
+  top: 0rem;
+  /* negativ → ragt nach oben raus */
+  width: var(--n2f-callout-icon-size);
+  height: var(--n2f-callout-icon-size);
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-image: var(--n2f-callout-icon-image);
+  background-color: var(--n2f-callout-icon-color);
+  /*background-size: cover;*/
+  /*not decided yet what I will take cover or partly size*/
+  background-size: 90% 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* geschlossener Zustand: roter, durchgezogener Rand */
+  border: 4px solid var(--n2f-callout-border-closed);
+  /* leichter Schattenring für mehr Kontrast */
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.75);
+}
+
+/* geöffnet: grüner, gestrichelter Rand */
+.n2f-callout[open] .n2f-callout-title::before {
+  border: 4px dashed var(--n2f-callout-border-open);
+  background-color: #000;
+  /* optionaler leichter Overlay-Effekt */
+}
+
+/* Tastaturfokus sichtbar machen */
+.n2f-callout-title:focus-visible {
+  outline: 2px solid #ffeb3b;
+  outline-offset: 4px;
+}
+
+/* =============================
+       Inhalt
+       ============================= */
+.n2f-callout-content {
+  padding: 2rem 1.25rem 1.25rem 1.25rem;
+  background: var(--n2f-callout-body-bg);
+  color: var(--n2f-callout-body-text-color);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.n2f-callout-content p {
+  margin: 0 0 0.75rem;
+}
+
+.n2f-callout-content p:last-child {
+  margin-bottom: 0;
+}
+
+.n2f-callout-content em {
+  color: #90caf9;
+}

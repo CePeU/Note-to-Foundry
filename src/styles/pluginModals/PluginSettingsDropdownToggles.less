@@ -1,0 +1,41 @@
+/*========================================================================================================
+CSS for details tag used in settings menu
+==========================================================================================================*/
+
+/*Target the summary tag and disable the arrow marker and the events to toggle the summary tag */
+summary.n2f-toggle-summary-tag {
+  list-style: none;
+  pointer-events: none;
+}
+
+.n2f-toggle-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Target the point in the toggle element and change it to a diamond style*/
+summary.n2f-toggle-summary-tag label.checkbox-container::after /*or before or setting-item-control*/ {
+  /*pointer-events: auto;*/
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  /*width: 20px;      /* Rectangle width */
+  /*height: 20px;     /* Rectangle height */
+  /*transform: rotate(45deg);*/
+  /*border: 10px solid black; */
+}
+/*Traget the label for the checkbox container and enable pointer on it events (again after having them removed for the summary tag)*/
+summary.n2f-toggle-summary-tag label.checkbox-container{
+  pointer-events: auto;
+}
+
+/*
+.modal-container div.vertical-tab-content {
+  overflow: hidden; /*hides scrollbar
+}*/
+
+/*has targets the parent if (any) child has the class n2f-settings-tab-header   
+an alternative is to target any child class that starts with n2f .vertical-tab-content:has([class^="n2f"])*/
+.vertical-tab-content:has(.n2f-settings-tab-header) {
+  overflow-y: hidden;
+  /*padding: 0;*/
+  padding-inline-start: 0px;
+  padding-inline-end: 0px;
+}

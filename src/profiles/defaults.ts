@@ -1,0 +1,163 @@
+import { VERSION_CONSTANTS } from "../versionConstant";
+import type { ProfileSettings, NoteToFoundrySettings } from "./types";
+
+export const DEFAULT_SETTINGS: ProfileSettings = {
+	default: {
+		profileVersion: {
+			MAJOR: VERSION_CONSTANTS.MAJOR,
+			MINOR: VERSION_CONSTANTS.MINOR,
+			PATCH: VERSION_CONSTANTS.PATCH,
+		},
+		isDebugOutput: false,
+		attributeList: ["id", "href", "src", "width", "height", "alt", "colspan", "rowspan"],
+		classList: [],
+		isActiveProfile: true,
+		rulesForTags: [["div", "p"]],
+		rulesForRegex: [["", "", ""]], // Default regex rules, can be empty or filled with initial rules
+		jsCode: "",
+		exportDirty: false,
+		exportFile: false,
+		isExportVaultPaths: false,
+		htmlPictureExportFilePath: "",
+		htmlPictureRelativeExportFilePath: "",
+		exportClipboard: true,
+		exportFoundry: false,
+		internalLinkResolution: false,
+		htmlExportFilePath: "",
+		htmlLinkPath: "",
+		encodePictures: true, // Default value for image encoding
+		removeFrontmatter: true, // Default value for removing frontmatter
+		foundryApiKey: "",
+		foundryAuthMetadata: null,
+		foundryHeadlessCredentialMode: "explicit",
+		foundryRelayServer: "https://foundryrestapi.com",
+		assetSaveRuleset: [["", ""]],
+		foundryHeadlessUsed: false,
+		foundryUser: "Gamemaster",
+		foundryPW: "",
+		foundryWorld: "",
+		foundryClientId: "",
+		foundryIP: "",
+		excludeFoldersByregex: "",
+		footerAndHeader: {
+			clipboard: ["", ""],
+			fileHTML: ["", ""],
+			foundryHTML: ["", ""],
+		},
+		foundrySettingsUsed: false,
+		foundryFolder: "Obsidian Export",
+		foundryJournal: "Obsidian",
+		foundryPicturePath: "assets/pictures",
+		foundryMacroLinkingRun: false,
+		ObsidianWriteFrontmatter: false,
+		foundryFrontmatterWriteBack: {
+			isWriteBack: false,
+			Folder: false,
+			Journal: false,
+			PageTitle: false,
+			Page: false,
+			PicturePath: false,
+			UUID: false,
+		},
+	},
+	Foundry_export: {
+		profileVersion: {
+			MAJOR: VERSION_CONSTANTS.MAJOR,
+			MINOR: VERSION_CONSTANTS.MINOR,
+			PATCH: VERSION_CONSTANTS.PATCH,
+		},
+		isDebugOutput: false,
+		attributeList: [
+			"alt",
+			"colspan",
+			"data-callout",
+			"data-callout-fold",
+			"data-callout-metadata",
+			"data-heading",
+			"height",
+			"href",
+			"open",
+			"rowspan",
+			"src",
+			"width",
+		],
+		classList: ["callout"],
+		isActiveProfile: false,
+		rulesForTags: [
+			['div[data-callout="secret"]', "section"],
+			["div.callout-title", "summary"],
+			["div.callout", "details"],
+			["div.callout-title-inner", "span"],
+			["svg.lucide-copy", ""],
+			["svg", ""],
+			["a.tag", ""],
+			["span[alt]", "p"],
+		],
+		rulesForRegex: [
+			['data-callout-fold=""/gm', "open"],
+			['data-callout-fold="\\+"/gm', "open"],
+			['data-callout-fold="\\-"/gm', ""],
+			[
+				'<section[^>]*data-callout="secret"[^>]*class="callout"[^>]*>\\s*<summary>(.*?)<\\/summary>/g',
+				'<section  class="secret">',
+			],
+			['data-heading="([^"]*<font\\s+color=[^>]+>[^<]*<\\/font>[^"]*)"/gm', ""],
+		],
+		jsCode:
+			'const newHtml = html.replace(/class="secret"/g, function(match) {\n  const newId = api.createID();  // Called once per match ✅\n  return `class="secret" id="secret-${newId}"`;\n});\nreturn newHtml',
+		exportDirty: false,
+		exportFile: false,
+		isExportVaultPaths: false,
+		htmlPictureExportFilePath: "",
+		htmlPictureRelativeExportFilePath: "",
+		exportClipboard: true,
+		exportFoundry: true,
+		internalLinkResolution: true,
+		htmlExportFilePath: "",
+		htmlLinkPath: "",
+		encodePictures: false,
+		removeFrontmatter: true,
+		foundryApiKey: "",
+		foundryAuthMetadata: null,
+		foundryHeadlessCredentialMode: "explicit",
+		foundryRelayServer: "https://foundryrestapi.com",
+		assetSaveRuleset: [["", ""]],
+		foundryHeadlessUsed: false,
+		foundryUser: "Gamemaster",
+		foundryPW: "",
+		foundryWorld: "",
+		foundryClientId: "",
+		foundryIP: "",
+		excludeFoldersByregex: "",
+		footerAndHeader: {
+			clipboard: ["", ""],
+			fileHTML: ["", ""],
+			foundryHTML: ["", ""],
+		},
+		foundrySettingsUsed: false,
+		foundryFolder: "Obsidian Export",
+		foundryJournal: "Obsidian",
+		foundryPicturePath: "assets/pictures",
+		foundryMacroLinkingRun: true,
+		ObsidianWriteFrontmatter: false,
+		foundryFrontmatterWriteBack: {
+			isWriteBack: false,
+			Folder: false,
+			Journal: false,
+			PageTitle: false,
+			Page: false,
+			PicturePath: false,
+			UUID: false,
+		},
+	},
+};
+
+export function cloneProfile<T>(value: T): T {
+	return JSON.parse(JSON.stringify(value)) as T;
+}
+export function createDefaultProfile(): NoteToFoundrySettings {
+	return cloneProfile(DEFAULT_SETTINGS.default);
+}
+export function createDefaultProfiles(): ProfileSettings {
+	return cloneProfile(DEFAULT_SETTINGS);
+}

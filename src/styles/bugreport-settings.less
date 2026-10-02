@@ -1,0 +1,20 @@
+.otf-allowlist .setting-item-control {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+.otf-allowlist textarea { width: 100%; resize: vertical; }
+.otf-allowlist-tags { display: flex; flex-wrap: wrap; gap: 0.4em; }
+.otf-allowlist-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.15em 0.5em;
+  border-radius: 1em;
+  background: var(--background-modifier-hover);
+}
+.otf-allowlist-tag button { padding: 0 0.2em; border: 0; box-shadow: none; height: auto; background: transparent; }
+.otf-key-status { padding: 0.25em 0.5em; border-radius: 0.5em; }
+.otf-key-status[data-phase="valid"] { color: var(--text-success, var(--color-green)); }
+.otf-key-status[data-phase="invalid"], .otf-key-status[data-phase="permission-denied"] { color: var(--text-error); }

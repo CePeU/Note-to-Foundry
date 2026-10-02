@@ -1,0 +1,56 @@
+{
+  "name": "NoteToFoundry",
+  "version": "1.3.5",
+  "description": "exports markdown to html and allows to adjust the html code. It then allows to export the html to clipboard, as file and to foundry vtt.",
+  "main": "main.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit --skipLibCheck --pretty false",
+    "build:styles": "lessc src/styles/styles.less dist/styles.css",
+    "package": "npm run build && npm run build:styles && node scripts/package-plugin.mjs",
+    "test:unit": "node tests/run.mjs",
+    "test": "node esbuild.config.mjs test",
+    "posttest": "cp ma*.j* styles.css data.json '/home/psu/Obsidian Vault A/DEV_A DSA Kampagne/.obsidian/plugins/notetofoundry'",
+    "win": "node esbuild.config.mjs test",
+    "postwin": "copy ma*.j* \"E:\\Projekte\\Obsidian Vault\\DEV_B OLD DSA Kampagne\\.obsidian\\plugins\\notetofoundry\" && copy styles.css \"E:\\Projekte\\Obsidian Vault\\DEV_B OLD DSA Kampagne\\.obsidian\\plugins\\notetofoundry\" && copy data.json \"E:\\Projekte\\Obsidian Vault\\DEV_B OLD DSA Kampagne\\.obsidian\\plugins\\notetofoundry\"",
+    "prewindev": "lessc src/styles/styles.less dist/styles.css && copy src\\styles\\*.svg dist\\",
+    "windev": "node esbuild.config.mjs test",
+    "postwindev": "copy manifest.json dist && copy dist\\*.* \"F:\\Code_Projekts\\Obsidian Vault\\DEV_A DSA Kampagne\\.obsidian\\plugins\\notetofoundry\"",
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "converter",
+    "html",
+    "foundry"
+  ],
+  "author": "CePeU",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/codemirror": "^5.60.16",
+    "@types/css-font-loading-module": "^0.0.14",
+    "@types/electron": "^1.6.12",
+    "@types/node": "^16.11.6",
+    "@types/tern": "^0.23.9",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "builtin-modules": "3.3.0",
+    "electron": "^36.3.2",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "less": "^4.6.4",
+    "linkedom": "0.18.12",
+    "obsidian": "1.13.1",
+    "obsidian-typings": "^2.44.1",
+    "prettier": "^3.6.2",
+    "tslib": "2.4.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "xxhash-wasm": "^1.1.0"
+  }
+}
