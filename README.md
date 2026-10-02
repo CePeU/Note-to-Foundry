@@ -1,13 +1,13 @@
-[![Latest stable Version](https://img.shields.io/github/v/release/CePeU/Note-To-Foundry?filter=*stable&sort=semver&display_name=tag&label=Latest%20stable%20Version)](https://github.com/CePeU/Note-To-Foundry/releases/latest)
-![GitHub all releases](https://img.shields.io/github/downloads/CePeU/Note-To-Foundry/total)
-[![License](https://img.shields.io/github/license/CePeU/Note-To-Foundry)](LICENSE)
-[![Latest pre-release](https://img.shields.io/github/v/release/CePeU/Note-To-Foundry?include_prereleases&filter=*-stable!&sort=semver&label=Latest%20Prerelease)](https://github.com/CePeU/Note-To-Foundry/releases)
+[![Latest stable Version](https://img.shields.io/github/v/release/CePeU/Note-to-Foundry?filter=*stable&sort=semver&display_name=tag&label=Latest%20stable%20Version)](https://github.com/CePeU/Note-to-Foundry/releases/latest)
+![GitHub all releases](https://img.shields.io/github/downloads/CePeU/Note-to-Foundry/total)
+[![License](https://img.shields.io/github/license/CePeU/Note-to-Foundry)](LICENSE)
+[![Latest pre-release](https://img.shields.io/github/v/release/CePeU/Note-to-Foundry?include_prereleases&filter=*-stable!&sort=semver&label=Latest%20Prerelease)](https://github.com/CePeU/Note-to-Foundry/releases)
 ![Info](https://img.shields.io/badge/info-upcoming:%20exportprofiles%20as%20frontmatter-FFE417)  
 
 # Documentation
 
 You will find a good and helpfull documentation following this link:
-![Dokumentation NotesToFoundry](https://cepeu.github.io/Note-To-Foundry)
+![Dokumentation NotesToFoundry](https://cepeu.github.io/Note-to-Foundry)
 
 Below you only will find some boring history.
 
@@ -27,7 +27,7 @@ content creators are affected by this if I am informed correctly)
 - Better editor (with plugins, undo, formatting etc.)
 - Dataview plugin and now Base    
 (even if you need to use Dataview or Datacore and not Base to utilize my plugin to it's fullest potential!   
-Take a look at: [NPC overview](https://github.com/CePeU/Note-To-Foundry/wiki/Demo))
+Take a look at: [NPC overview](https://github.com/CePeU/Note-to-Foundry/wiki/Demo))
 - Second window during gameplay (one for Foundry one for Obsidian = more Screen size)
 - note centric + a lot of plugins for TTRPG like for example the Gantt-this plugin or the TTRPG Maps plugin
 - better/easier backup
@@ -120,16 +120,16 @@ I also want to thank the Discord members on the Obsidian plugin-dev channel!
 
 ### From Github
 
-1. Download the latest release from the [releases page](https://github.com/CePeU/Note-To-Foundry/releases).
+1. Download the latest release from the [releases page](https://github.com/CePeU/Note-to-Foundry/releases).
 2. Unzip the downloaded file.
 3. Copy the folder to your Obsidian plugins directory (usually located at `.obsidian/plugins`).
-4. Enable the "Note-To-Foundry" plugin from the Settings > Community Plugins menu in Obsidian.
+4. Enable the "Note-to-Foundry" plugin from the Settings > Community Plugins menu in Obsidian.
 
 ### As beta plugin (using BRAT)
 
 1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat) from the Community Plugins in Obsidian.
 2. Open the command palette and run the command `BRAT: Add a beta plugin for testing`
-3. Copy the project link (https://github.com/CePeU/Note-To-Foundry) into the modal that opens up.
+3. Copy the project link (https://github.com/CePeU/Note-to-Foundry) into the modal that opens up.
 4. Make sure **Enable after installing the plugin** is checked
 5. Click on **Add Plugin**
 
