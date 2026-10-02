@@ -141,6 +141,16 @@ Take a look at: [NPC overview](https://github.com/CePeU/Note-to-Foundry/wiki/Dem
 
 - Obsidian: [https://github.com/obsidianmd/obsidian-api](https://github.com/obsidianmd/obsidian-api)
 
+### Development dependencies
+
+Use Node.js 24 with npm 12 (Node 22.13 or newer in the 22.x line is also supported). Install the locked dependencies with `npm ci`, check types with `npm run typecheck`, run tests with `npm test`, and build the installable plugin with `npm run package`.
+
+In Windows PowerShell, use `npm.cmd` instead of `npm` if execution policy blocks `npm.ps1`.
+
+Obsidian's API definitions are pinned to 1.13.1. The Moment.js override selects 2.31.0 to fix the reported vulnerabilities; upgrading Obsidian alone still installs an affected Moment.js version. TypeScript stays on 6.0.x because the current typescript-eslint packages do not support TypeScript 7. Node type definitions stay on the Node 24 line.
+
+The npm 12 `allowScripts` policy permits esbuild's setup script and disables Electron's binary download. Electron is used for type definitions; the running Obsidian app supplies Electron at runtime. Run `npm audit` to check for newly reported vulnerabilities before changing dependency versions.
+
 
 
 

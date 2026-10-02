@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.6] / 2026-10-03
+### Fixed
+- Restore Obsidian 1.13.1 API definitions and override Moment.js to patched version 2.31.0 to resolve npm audit findings.
+- Update development dependencies to current compatible releases, retaining TypeScript 6.0.x for typescript-eslint compatibility and Node 24 definitions.
+- Remove obsolete Electron type stubs, unused internal Obsidian typings, and the builtin-modules dependency.
+- Use bundler module resolution for TypeScript 6 and permit esbuild installation scripts across compatible version updates in npm 12.
+- Make npm test run unit tests without copying files to a hard-coded vault. Electron remains a type-only development dependency; its binary download is disabled in npm 12.
+
 ## [1.3.5] / 2026-10-02
 ### Fixed
 - Treat bare Windows picture drives such as `D:` as drive roots, matching the file export examples in ToDo.md.
