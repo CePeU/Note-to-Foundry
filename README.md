@@ -7,33 +7,56 @@
 # Documentation
 
 You will find a good and helpfull documentation following this link:
-![Dokumentation NotesToFoundry](https://cepeu.github.io/Note-to-Foundry)
+[Dokumentation NotesToFoundry](https://cepeu.github.io/Note-to-Foundry)
 
-Below you only will find some boring history.
+## What it does
 
-## Why Obsidian and not directly in Foundry
+1. Converts the Markdown content of a note to HTML (either selected text or entire document) using Obsidian's markdown renderer. It also gives the option to export to Foundry VTT.   
+2. Cleans up the HTML from the clutter obsidian (naturally) adds
+   - Removes all attributes from tags (a list of attributes to keep can be configured in the settings)
+   - Removes all classes (a list of classes to keep can be configured in the settings)
+   - Can convert internal images into base64 strings
+   - Removes empty paragraphs and divs (left overs from comment blocks, for example)
+   - allows for export profiles
+   - allows for HTML tag replacement
+   - allows for HTML modification with regex expressions
+   - allows to save HTML export to files (Linux file export could use more testing)
+   - allows to add a footer and header section for the exported HTML (so you can add a body tag and "style.css" for the file export)
+   - allows to add your own JavaScript code (macro) to manipulate and adjust the HTML before export
+   - allows to upload as journal to Foundry VTT
+   - also uploads pictures and fixes picture paths for Foundry VTT so pages are linked together
+   - allows to relinking exported journal entries according to the Obsidian links
+   - (planned if possible: batch export and relinking of stale links if a page is deleted and reexported)
+   - (planned: test it more in deepth on Linux)
 
-This is a purely personal view and while I love Foundry as a VTT it sucks in comparison at preparation/journal handling:
 
-### Foundry Cons
-- The devs only improve marginally on Foundry journals. Journals are only a second or third thought in their considerations. (even their own
-content creators are affected by this if I am informed correctly)  
-- The editor sucks even though it could be made better with just a bit of effort (undo is implemented only as keybinding so not easily found by new users,
-  font handling is a mess, HTML sanitizing at least until V14 seemed to have been rolled up in a wild magic zone, etc.).
-- Campaign management has improved but is not nearly on par with the current plugins (as of 01.10.2026) which have become available in the last 9 months for Obsidian (also due to AI coding assistance).
-- It is a VTT (more or less)
+## Tested on
 
-### Obsidian pros
-- Better editor (with plugins, undo, formatting etc.)
-- Dataview plugin and now Base    
-(even if you need to use Dataview or Datacore and not Base to utilize my plugin to it's fullest potential!   
-Take a look at: [NPC overview](https://github.com/CePeU/Note-to-Foundry/wiki/Demo))
-- Second window during gameplay (one for Foundry one for Obsidian = more Screen size)
-- note centric + a lot of plugins for TTRPG like for example the Gantt-this plugin or the TTRPG Maps plugin
-- better/easier backup
-- better search and organization of notes
+- Desktop (Windows/Linux)
 
-# Foreword
+## Installation
+
+### From Github
+
+1. Download the latest release from the [releases page](https://github.com/CePeU/Note-to-Foundry/releases).
+2. Unzip the downloaded file.
+3. Copy the folder to your Obsidian plugins directory (usually located at `.obsidian/plugins`).
+4. Enable the "Note-to-Foundry" plugin from the Settings > Community Plugins menu in Obsidian.
+
+### As beta plugin (using BRAT)
+
+1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat) from the Community Plugins in Obsidian.
+2. Open the command palette and run the command `BRAT: Add a beta plugin for testing`
+3. Copy the project link (https://github.com/CePeU/Note-to-Foundry) into the modal that opens up.
+4. Make sure **Enable after installing the plugin** is checked
+5. Click on **Add Plugin**
+
+#### Updating
+
+Beta plugins can be updated using the command palette by running the command `Check for updates to all beta plugins and UPDATE`. Optionally, beta plugins can be configured to auto-update when starting Obsidian. This feature can be enabled in the BRAT plugin settings tab.
+
+
+# Some words on the plugin history itself
 
 A long time ago now it seems I read the following line:
 
@@ -91,53 +114,30 @@ I also want to thank the Discord members on the Obsidian plugin-dev channel!
 @joethei  
 @mnaoumov has been exceptionally kind and helpful!! Thanks!!  
 
-## What it does
 
-1. Converts the Markdown content of a note to HTML (either selected text or entire document) using Obsidian's markdown renderer. It also gives the option to export to Foundry VTT.   
-2. Cleans up the HTML from the clutter obsidian (naturally) adds
-   - Removes all attributes from tags (a list of attributes to keep can be configured in the settings)
-   - Removes all classes (a list of classes to keep can be configured in the settings)
-   - Can convert internal images into base64 strings
-   - Removes empty paragraphs and divs (left overs from comment blocks, for example)
-   - allows for export profiles
-   - allows for HTML tag replacement
-   - allows for HTML modification with regex expressions
-   - allows to save HTML export to files (Linux file export could use more testing)
-   - allows to add a footer and header section for the exported HTML (so you can add a body tag and "style.css" for the file export)
-   - allows to add your own JavaScript code (macro) to manipulate and adjust the HTML before export
-   - allows to upload as journal to Foundry VTT
-   - also uploads pictures and fixes picture paths for Foundry VTT so pages are linked together
-   - allows to relinking exported journal entries according to the Obsidian links
-   - (planned if possible: batch export and relinking of stale links if a page is deleted and reexported)
-   - (planned: test it more in deepth on Linux)
+# Why Obsidian and not directly in Foundry
 
+This is a purely personal view and while I love Foundry as a VTT it sucks in comparison at preparation/journal handling:
 
-## Tested on
+### Foundry Cons
+- The devs only improve marginally on Foundry journals. Journals are only a second or third thought in their considerations. (even their own
+content creators are affected by this if I am informed correctly)  
+- The editor sucks even though it could be made better with just a bit of effort (undo is implemented only as keybinding so not easily found by new users,
+  font handling is a mess, HTML sanitizing at least until V14 seemed to have been rolled up in a wild magic zone, etc.).
+- Campaign management has improved but is not nearly on par with the current plugins (as of 01.10.2026) which have become available in the last 9 months for Obsidian (also due to AI coding assistance).
+- It is a VTT (more or less)
 
-- Desktop (Windows/Linux)
+### Obsidian pros
+- Better editor (with plugins, undo, formatting etc.)
+- Dataview plugin and now Base    
+(even if you need to use Dataview or Datacore and not Base to utilize my plugin to it's fullest potential!   
+Take a look at: [NPC overview](https://github.com/CePeU/Note-to-Foundry/wiki/Demo))
+- Second window during gameplay (one for Foundry one for Obsidian = more Screen size)
+- note centric + a lot of plugins for TTRPG like for example the Gantt-this plugin or the TTRPG Maps plugin
+- better/easier backup
+- better search and organization of notes
 
-## Installation
-
-### From Github
-
-1. Download the latest release from the [releases page](https://github.com/CePeU/Note-to-Foundry/releases).
-2. Unzip the downloaded file.
-3. Copy the folder to your Obsidian plugins directory (usually located at `.obsidian/plugins`).
-4. Enable the "Note-to-Foundry" plugin from the Settings > Community Plugins menu in Obsidian.
-
-### As beta plugin (using BRAT)
-
-1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat) from the Community Plugins in Obsidian.
-2. Open the command palette and run the command `BRAT: Add a beta plugin for testing`
-3. Copy the project link (https://github.com/CePeU/Note-to-Foundry) into the modal that opens up.
-4. Make sure **Enable after installing the plugin** is checked
-5. Click on **Add Plugin**
-
-#### Updating
-
-Beta plugins can be updated using the command palette by running the command `Check for updates to all beta plugins and UPDATE`. Optionally, beta plugins can be configured to auto-update when starting Obsidian. This feature can be enabled in the BRAT plugin settings tab.
-
-## API Documentation
+### API Documentation
 
 - Obsidian: [https://github.com/obsidianmd/obsidian-api](https://github.com/obsidianmd/obsidian-api)
 
